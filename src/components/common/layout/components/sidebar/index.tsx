@@ -47,99 +47,72 @@ const Sidebar = () => {
         },
         {
             id: 2,
-            label: 'QUẢN LÝ ĐỐI TÁC',
+            label: 'THÔNG TIN CHUNG',
             icon: <HomeIcon fill={'#637381'} size={22} />,
             children: [
                 {
                     id: 1,
-                    label: 'Quản lý chủ đầu tư',
+                    label: 'Quản lý chung',
                     icon: <BalanceIcon fill={'#637381'} size={22} />,
                     children: [
                         {
                             id: 1,
-                            label: 'Danh sách chủ đầu tư',
-                            href: '/partners/Investor_list',
-                            icon: <BalanceIcon fill={'#637381'} size={22} />,
-                        },
-                    ],
-                },
-                {
-                    id: 2,
-                    label: 'Quản lý khách hàng',
-                    icon: <PartnerIcon fill={'#637381'} size={22} />,
-                    children: [
-                        {
-                            id: 1,
-                            label: 'Danh sách khách hàng',
-                            href: '/partners/customer_list',
-                            icon: <BalanceIcon fill={'#637381'} size={22} />,
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            id: 2,
-            label: 'QUẢN LÝ NHÀ',
-            icon: <HomeIcon fill={'#637381'} size={22} />,
-            children: [
-                {
-                    id: 1,
-                    label: 'Quản lý nhà',
-                    icon: <BalanceIcon fill={'#637381'} size={22} />,
-                    children: [
-                        {
-                            id: 1,
-                            label: 'Danh sách nhà',
-                            href: '/house/list_house',
-                            icon: <BalanceIcon fill={'#637381'} size={22} />,
-                        },
-                    ],
-                },
-                {
-                    id: 2,
-                    label: 'Quản lý phòng trọ',
-                    icon: <PartnerIcon fill={'#637381'} size={22} />,
-                    children: [
-                        {
-                            id: 1,
-                            label: 'Danh sách phòng trọ',
-                            href: '/house/boarding_house',
-                            icon: <BalanceIcon fill={'#637381'} size={22} />,
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            id: 2,
-            label: 'QUẢN LÝ HOMEPAGE',
-            icon: <HomeIcon fill={'#637381'} size={22} />,
-            children: [
-                {
-                    id: 1,
-                    label: 'Tin đăng',
-                    icon: <BalanceIcon fill={'#637381'} size={22} />,
-                    children: [
-                        {
-                            id: 1,
-                            label: 'Danh sách',
-                            href: '/news/news-list',
+                            label: 'Quản lý danh mục',
+                            href: '/general-setting/accounts',
                             icon: <BalanceIcon fill={'#637381'} size={22} />,
                         },
                         {
                             id: 2,
-                            label: 'Danh mục',
-                            href: '/news/news-category',
+                            label: 'Quản lý quốc gia',
+                            href: '/general-setting/accounts',
                             icon: <BalanceIcon fill={'#637381'} size={22} />,
                         },
                         {
                             id: 3,
-                            label: 'Thể loại',
-                            href: '/news/news-group',
+                            label: 'Quản lý thể loại',
+                            href: '/general-setting/accounts',
                             icon: <BalanceIcon fill={'#637381'} size={22} />,
                         },
                     ],
+                },
+            ],
+        },
+        {
+            id: 2,
+            label: 'PHIM',
+            icon: <HomeIcon fill={'#637381'} size={22} />,
+            children: [
+                {
+                    id: 1,
+                    label: 'Quản lý phim',
+                    icon: <BalanceIcon fill={'#637381'} size={22} />,
+                    children: [
+                        {
+                            id: 1,
+                            label: 'Danh sách phim',
+                            href: '/general-setting/accounts',
+                            icon: <BalanceIcon fill={'#637381'} size={22} />,
+                        },
+                        {
+                            id: 2,
+                            label: 'Quản lý tập phim',
+                            href: '/general-setting/accounts',
+                            icon: <BalanceIcon fill={'#637381'} size={22} />,
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 3,
+            label: 'QUẢN LÝ CRAWL',
+            icon: <HomeIcon fill={'#637381'} size={22} />,
+            children: [
+                {
+                    id: 1,
+                    label: 'Crawl dữ liệu',
+                    href: '/general-setting/accounts',
+                    icon: <BalanceIcon fill={'#637381'} size={22} />,
                 },
             ],
         },
@@ -159,13 +132,6 @@ const Sidebar = () => {
                             href: '/general-setting/accounts',
                             icon: <SettingsIcon fill={'#637381'} size={22} />,
                         },
-                        {
-                            id: 27567,
-                            label: 'Ngôn ngữ',
-                            href: '/general-setting/language',
-                            icon: <SettingsIcon fill={'#637381'} size={22} />,
-                        },
-
                         {
                             id: 23567,
                             label: 'Chung',
@@ -202,7 +168,7 @@ const Sidebar = () => {
                 >
                     <Image
                         alt="logo"
-                        className="w-[160px] h-max object-contain aspect-[16/9]"
+                        className="w-[200px] h-max aspect-[16/9]"
                         src={Logo.src}
                     />
                 </Link>

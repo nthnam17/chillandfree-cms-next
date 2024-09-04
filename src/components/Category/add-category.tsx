@@ -101,7 +101,7 @@ const AddCategory = ({ onClose, investorDetailList }: Props) => {
                         className="w-full"
                         label="Mô tả"
                         mt="md"
-                        placeholder="Email"
+                        placeholder=""
                     />
                     <Controller
                         control={control}

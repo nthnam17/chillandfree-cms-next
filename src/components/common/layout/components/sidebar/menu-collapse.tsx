@@ -151,7 +151,7 @@ const MenuCollapse = ({
                 >
                     {React.isValidElement(icon) &&
                         cloneElement(icon as ReactElement<IconProps>, {
-                            fill: pathname === href ? '#f78a1c' : '#637381',
+                            fill: pathname === href ? '#56721b' : '#637381',
                             size: 22,
                         })}
                     <span

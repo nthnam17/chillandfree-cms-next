@@ -15,11 +15,12 @@ const config: Config = {
             },
             colors: {
                 'primary-edit': '#4B49AC',
-                'primary-yellow': '#f78a1c',
+                'primary-yellow': '#56721b',
                 'primary-green': '#00747a',
                 'primary-gray': '#637381',
                 'primary-black': '#212b36',
                 'primary-border': '#919eab33',
+                'primary-bg': '#e5ebd8',
                 success: '#06d6a0',
                 'success-opcity': '#cdf7ec',
                 delete: '#ef476f',

@@ -11,8 +11,8 @@ export default function Home() {
                 logo={logo.src}
                 thumbnail={logo.src}
             />
-            <Box className="mx-10 text-base rounded-md from-delete px-4 bg-success-opcity text-success py-3">
-                Ahome
+            <Box className="mx-10 text-base rounded-md from-delete px-4 bg-primary-bg text-primary-yellow py-3">
+                Chill And Free Xin chào !
             </Box>
         </>
     );

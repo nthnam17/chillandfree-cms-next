@@ -114,7 +114,7 @@ export const theme = createTheme({
                     fontWeight: 600,
                     borderRadius: '50%',
                     borderColor: '#919eab33',
-                    accentColor: '#f78a1c',
+                    accentColor: '#56721b',
                 },
             },
         }),
@@ -276,8 +276,8 @@ export const theme = createTheme({
         // Avatar
         Avatar: Avatar.extend({
             styles: {
-                root: { backgroundColor: '#919eab33' }
-            }
-        })
+                root: { backgroundColor: '#919eab33' },
+            },
+        }),
     },
 });
