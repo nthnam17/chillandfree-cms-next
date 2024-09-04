@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Public Sans Variable', sans-serif;
+    font-weight: 500;
+}
+
+.ck-editor__editable_inline {
+    padding: 0 30px !important;
+}
+
+.table-Page .mantine-Select-input {
+    width: 80px !important;
+}
+
+.ck-editor .ck-toolbar {
+    border: 1px solid #919eab33 !important;
+    border-top-right-radius: 8px !important;
+    border-top-left-radius: 8px !important;
+}
+
+.ck-editor .ck-content {
+    border: 1px solid #919eab33 !important;
+    border-bottom-right-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+    min-height: 320px;
+    max-height: 400;
+    overflow-y: auto;
+}
+
+a:hover {
+    color: #f98925 !important;
+}
+
+.m-326d024a[data-active] {
+    background-color: #f78a1c;
+    color: #ffffff !important;
+}
+
+/* .custom-scrollbar {
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #888;
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #000;
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+} */
