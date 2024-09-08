@@ -78,7 +78,7 @@ const Sidebar = () => {
             ],
         },
         {
-            id: 2,
+            id: 3,
             label: 'PHIM',
             icon: <HomeIcon fill={'#637381'} size={22} />,
             children: [
@@ -104,7 +104,7 @@ const Sidebar = () => {
             ],
         },
         {
-            id: 3,
+            id: 4,
             label: 'QUẢN LÝ CRAWL',
             icon: <HomeIcon fill={'#637381'} size={22} />,
             children: [

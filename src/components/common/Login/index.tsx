@@ -6,37 +6,34 @@ import {
     TextInput,
     Title,
 } from '@mantine/core';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
+
 import React from 'react';
 import CustomImage from '../CustomImage';
-import Logo from '@public/logo.png';
+import Logo from '@public/logo2.png';
 import Link from 'next/link';
-import { useForm } from '@mantine/form';
-import { LoginType } from './Login.type';
-import {
-    LoginUserApiResponse,
-    useLoginMutation,
-} from '@src/redux/endPoint/login';
 import { notifications } from '@mantine/notifications';
 import { useRouter } from 'next/router';
+import { fnLogin } from '@src/store/login';
+import Cookies from 'js-cookie';
 
 const Login = () => {
-    const [login] = useLoginMutation();
-    const router = useRouter();
-    const form = useForm({
-        initialValues: {
-            usernameOrEmail: '',
-            password: '',
-        },
-        validate: {
-            usernameOrEmail: (value) =>
-                value.trim() !== '' ? null : 'Nhập tài khoản  ',
-            password: (value) => (value.trim() !== '' ? null : 'Nhập mật khẩu'),
-        },
+    const {
+        reset,
+        control,
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        formState: { errors },
+    } = useForm<any>({
+        mode: 'onTouched',
     });
-
-    const handleSubmit = async (value: LoginType) => {
-        const response: LoginUserApiResponse = await login(value);
-        if (response.error) {
+    const router = useRouter();
+    const onSubmit = async (data: any) => {
+        const res: any = await fnLogin(data);
+        console.log(res.statusCode);
+        if (res.statusCode === 401) {
             notifications.show({
                 color: 'red',
                 title: 'Đăng nhập thất bại',
@@ -44,8 +41,22 @@ const Login = () => {
                 bg: '#ffcdd2',
             });
         } else {
-            router.reload();
+            const token = res.data.access_token;
+            const role = res.data.role;
+            const expirationDate = new Date();
+            if (token) {
+                Cookies.set('accessToken', token, {
+                    expires: expirationDate.getDate() + 7,
+                    path: '/',
+                });
+                Cookies.set('Role', role, {
+                    expires: expirationDate.getDate() + 7,
+                    path: '/',
+                });
+                router.push('/');
+            }
         }
+        return;
     };
 
     return (
@@ -53,24 +64,27 @@ const Login = () => {
             <Box
                 className="w-[70%] xl:w-[70%] lg:w-[50%] md:w-[50%] sm:w-[50%] sm:block relative hidden rounded-tr-3xl rounded-br-3xl "
                 style={{
-                    backgroundImage: 'url("/background-login.jpg")',
+                    backgroundImage: 'url("/bg-lg.jpg")',
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                 }}
             >
                 <Box className="w-max absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <Title
-                        className="text-[#ffffff] text-md text-shadow"
+                        className="text-[#ffffff] text-md text-shadow drop-shadow-2xl"
                         order={1}
                     >
                         Chào mừng đến với{' '}
                     </Title>
-                    <Title className="text-[#ffffff] text-md" order={1}>
-                        Tektra CMS Admin
+                    <Title
+                        className="text-[#ffffff] text-md drop-shadow-2xl"
+                        order={1}
+                    >
+                        Chill And Free CMS
                     </Title>
                 </Box>
             </Box>
-            <Box className="w-full xl:w-[30%] lg:w-[50%] md:w-[50%] sm:w-[50%] flex flex-col items-center gap-5">
+            <Box className="w-full xl:w-[30%] lg:w-[50%] md:w-[50%] sm:w-[50%] flex flex-col items-center gap-5 pt-10">
                 <Box className="mt-[3rem]">
                     <Link className="" href="/">
                         <CustomImage
@@ -82,7 +96,7 @@ const Login = () => {
                     </Link>
                 </Box>
 
-                <Box className="w-full h-auto pt-20" maw={340} mx="auto">
+                <Box className="w-full h-auto" maw={340} mx="auto">
                     <Title
                         className="text-[#050505] text-md text-center "
                         order={2}
@@ -93,29 +107,63 @@ const Login = () => {
                         <form
                             className="flex flex-col gap-4"
                             noValidate
-                            onSubmit={form.onSubmit((value) => {
-                                handleSubmit(value);
-                            })}
+                            onSubmit={handleSubmit(onSubmit)}
                         >
                             <TextInput
-                                label="Tài khoản"
-                                placeholder="Nhập tài khoản của bạn"
+                                label="Email"
+                                placeholder="Nhập email tài khoản của bạn"
                                 radius="md"
+                                required
                                 size="md"
-                                withAsterisk
-                                {...form.getInputProps('usernameOrEmail')}
+                                {...register('email', {
+                                    pattern: {
+                                        // eslint-disable-next-line no-useless-escape
+                                        value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                                        message: 'Email không đúng định dạng',
+                                    },
+                                    validate: (value) => {
+                                        return (
+                                            !!value.trim() ||
+                                            'Vui lòng nhập email để đăng nhập'
+                                        );
+                                    },
+                                })}
+                                error={errors?.email?.message as string}
+                                styles={{
+                                    input: {
+                                        borderColor: errors?.email
+                                            ? 'red'
+                                            : '#e9ecee',
+                                    },
+                                }}
                             />
                             <PasswordInput
+                                required
                                 label="Mật khẩu"
                                 placeholder="Nhập mật khẩu của bạn"
                                 radius="md"
                                 size="md"
-                                withAsterisk
-                                {...form.getInputProps('password')}
+                                {...register('password', {
+                                    required: 'Mật khẩu không được để trống',
+                                    validate: (value) => {
+                                        return (
+                                            !!value.trim() ||
+                                            'Mật khẩu không được để trống'
+                                        );
+                                    },
+                                })}
+                                error={errors?.password?.message as string}
+                                styles={{
+                                    input: {
+                                        borderColor: errors?.password
+                                            ? 'red'
+                                            : '#e9ecee',
+                                    },
+                                }}
                             />
 
                             <Button
-                                className="bg-[#19a9bf] hover:bg-[#f58920] hover:border-[#f58920] text-[#ffffff]"
+                                className="bg-primary-btn text-[#ffffff] hover:bg-primary-bg hover:border-primary-btn hover:text-primary-btn "
                                 radius="md"
                                 size="md"
                                 type="submit"

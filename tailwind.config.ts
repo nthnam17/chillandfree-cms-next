@@ -21,6 +21,7 @@ const config: Config = {
                 'primary-black': '#212b36',
                 'primary-border': '#919eab33',
                 'primary-bg': '#e5ebd8',
+                'primary-btn': '#56721b',
                 success: '#06d6a0',
                 'success-opcity': '#cdf7ec',
                 delete: '#ef476f',
