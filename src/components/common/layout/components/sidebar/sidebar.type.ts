@@ -8,7 +8,7 @@ export type IMenuCollapse = {
     id: number;
     label: string;
     icon?: React.ReactNode;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line
     items: any[] | undefined;
     hover: boolean;
     href: string | undefined;

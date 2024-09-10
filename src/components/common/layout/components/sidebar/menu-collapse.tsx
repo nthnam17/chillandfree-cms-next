@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Accordion, Box } from '@mantine/core';
 import { RootState } from '@src/redux/store';
 import Link from 'next/link';
@@ -59,7 +58,7 @@ const MenuCollapse = ({
                 value={label}
             >
                 <Accordion.Control
-                    className={`relative flex flex-col-reverse sm:flex-row-reverse max-w-full rounded-lg pl-3 py-1 pr-2 mb-1 min-h-[44px] translate-x-0 ease-in-out duration-200 ${
+                    className={`relative flex  flex-col-reverse sm:flex-row-reverse max-w-full rounded-lg pl-3 py-1 pr-2 mb-1 min-h-[44px] translate-x-0 ease-in-out duration-200 ${
                         isShow || (hover && !isShow)
                             ? 'w-[14rem]'
                             : 'w-full justify-center'
@@ -85,21 +84,21 @@ const MenuCollapse = ({
                     <span
                         className={`${
                             isShow || (hover && !isShow) ? '' : 'hidden'
-                        }  ease-in-out duration-200 text-[10px] sm:text-base font-semibold text-[#4b5761]
+                        }  ease-in-out duration-200 text-[14px] font-semibold text-[#4b5761]
                         `}
                     >
                         {label}
                     </span>
                 </Accordion.Control>
-                <span
+                {/* <span
                     className={`${
                         isShow || (hover && !isShow)
                             ? 'hidden'
                             : 'w-max block text-[0.7rem] m-auto text-[#637381]'
                     } `}
                 >
-                    {label}
-                </span>
+                    {label} {isShow ? 1 : 2}
+                </span> */}
                 {isShow || (hover && !isShow) ? (
                     <Accordion.Panel className="bg-transparent p-0" px="0">
                         <div className="flex flex-col gap-[2px]">
@@ -151,7 +150,7 @@ const MenuCollapse = ({
                 >
                     {React.isValidElement(icon) &&
                         cloneElement(icon as ReactElement<IconProps>, {
-                            fill: pathname === href ? '#56721b' : '#637381',
+                            fill: pathname === href ? '#f78a1c' : '#637381',
                             size: 22,
                         })}
                     <span
